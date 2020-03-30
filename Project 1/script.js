@@ -41,9 +41,11 @@ var clickOnScissors = function (event) {
         break;
         case "scissorsstone":
         console.log("YOU LOSE!");
+        lose();
         break;
         case "scissorsscissors":
         console.log("Its a draw");
+        draw();
         break;
     };
 
@@ -61,12 +63,15 @@ var clickOnPaper = function (event) {
     switch (userHasChosen + comHasChosen) {
         case "paperstone":
         console.log("YOU WIN!");
+        win();
         break;
         case "paperscissors":
         console.log("YOU LOSE!");
+        lose();
         break;
         case "paperpaper":
         console.log("Its a draw");
+        draw();
         break;
     };
 };
@@ -84,12 +89,15 @@ var clickOnStone = function (event) {
     switch (userHasChosen + comHasChosen) {
         case "stonescissors":
         console.log("YOU WIN!");
+        win();
         break;
         case "stonepaper":
         console.log("YOU LOSE!");
+        lose();
         break;
         case "stonestone":
         console.log("Its a draw");
+        draw();
         break;
     };
 };
@@ -108,5 +116,23 @@ function win(){
     console.log("You Win!!!👍")
     userScore++;
     userScoreHTML.innerHTML = userScore;
-    resultHTML.innerHTML = ("You Win!!!jkasdjnsj")
+    comScoreHTML.innerHTML = comScore;
+    resultHTML.innerHTML = ("You Win!!! from win function")
 };
+
+// user lose --> update score --> change result msg on browser
+function lose(){
+    console.log("You Lose!!!👎")
+    comScore++;
+    userScoreHTML.innerHTML = userScore;
+    comScoreHTML.innerHTML = comScore;
+    resultHTML.innerHTML = ("You lose!!! from lose function")
+};
+
+// draw scenario --> change result msg on browser
+function draw(){
+    console.log("its a draw!!!👌")
+    userScoreHTML.innerHTML = userScore;
+    comScoreHTML.innerHTML = comScore;
+    resultHTML.innerHTML = ("Its a draw!!! from draw function")
+}
